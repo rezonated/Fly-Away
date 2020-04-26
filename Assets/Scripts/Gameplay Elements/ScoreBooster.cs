@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ScoreBooster : MonoBehaviour
+{
+
+    private GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        transform.Rotate(0f, 0f, 0.7f);
+
+        if (transform.position.z < player.transform.position.z - 100)
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Player")
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
+
+}
